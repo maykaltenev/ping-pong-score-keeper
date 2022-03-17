@@ -4,9 +4,13 @@ const resetButton = document.querySelector('#resetButton');
 const p1Display = document.querySelector('#p1Display');
 const p2Display = document.querySelector('#p2Display');
 const winningScoreSelect = document.querySelector('#playto');
+const p1SetDisplay = document.querySelector('#p1Set');
+const p2SetDisplay = document.querySelector('#p2Set');
 // only for 3 games
 let p1Score = 0;
 let p2Score = 0;
+let p1SetScore = 0;
+let p2SetScore = 0;
 let winningScore = 3;
 let isGameOver = false;
 
@@ -20,9 +24,11 @@ p1Button.addEventListener('click', function () {
             isGameOver = true;
             p1Display.classList.add('winner');
             p2Display.classList.add('looser');
+            p1SetScore += 1;
         }
 
         p1Display.textContent = p1Score;
+        p1SetDisplay.textContent = p1SetScore;
     }
 })
 p2Button.addEventListener('click', function () {
@@ -32,8 +38,10 @@ p2Button.addEventListener('click', function () {
             isGameOver = true;
             p2Display.classList.add('winner');
             p1Display.classList.add('looser');
+            p2SetScore += 1;
         }
         p2Display.textContent = p2Score;
+        p2SetDisplay.textContent = p2SetScore;
     }
 })
 winningScoreSelect.addEventListener('change', function () {
