@@ -13,11 +13,15 @@ let isGameOver = false;
 p1Button.addEventListener('click', function () {
     if (!isGameOver) {
         p1Score += 1;
+        if (p1Score === p2Score && (winningScore - 1) === p1Score) {
+            winningScore += 1;
+        }
         if (p1Score === winningScore) {
             isGameOver = true;
             p1Display.classList.add('winner');
             p2Display.classList.add('looser');
         }
+
         p1Display.textContent = p1Score;
     }
 })
@@ -34,8 +38,11 @@ p2Button.addEventListener('click', function () {
 })
 winningScoreSelect.addEventListener('change', function () {
     winningScore = parseInt(this.value);
+    console.log(winningScore);
     reset();
 })
+
+
 resetButton.addEventListener('click', reset);
 
 function reset() {
